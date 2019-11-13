@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import CurrencyDisplay from './CurrencyDisplay';
+
 
 class Currency extends Component {
 	state = {
@@ -6,6 +8,32 @@ class Currency extends Component {
 		selectedCurrency: 'Select Currency',
 		amount: 0
 	}
+
+   handleAmountIncrease = (amount) => {
+      this.setState((prevState) =>{
+         return{
+            amount: (prevState.amount+=1)
+         }
+      })
+   }
+
+   handleAmountDecrease = (amount) => {
+      this.setState((prevState) =>{
+         return{
+            amount: (prevState.amount-=1)
+         }
+      })
+   }
+
+   handleOptionSelect = (e) => {
+      const userValue = e.target.value
+      this.setState(() => {
+         return{
+            selectedCurrency: userValue,
+            currencyChosen: userValue === 'Select Currency' ? false : true
+         }
+      })
+   }
 
 	render() {
 		const currencyData = [
@@ -22,20 +50,25 @@ class Currency extends Component {
 		))
 		return (
 			<div>
-				<select value={this.state.selectedCurrency}>
+				<select value={this.state.selectedCurrency} onChange = { (e) => this.handleOptionSelect(e)}>
 					<option value='Select Currency'>Select Currency</option>
 					{currencyOptions}
 				</select>
 				<div>
-					<button className='add'>+</button>
-					<button className='minus'>-</button>
+					<button className='add' onClick= {() => this.handleAmountIncrease()}>+</button>
+					<button className='minus' onClick = {() => this.handleAmountDecrease()}>-</button>
 				</div>
-				{this.props.render(
-					currencyData[this.state.selectedCurrency],
-					this.state.amount
+				{this.state.currencyChosen ? (
+					this.props.render(
+						currencyData[this.state.selectedCurrency],
+						this.state.amount
+					)
+				) : (
+					<p>Please Select Currency</p>
 				)}
 			</div>
 		)
 	}
 }
-// export default Currency;
+// const ExchangedCurrency = withCurrency(CurrencyDisplay)
+export default Currency;
