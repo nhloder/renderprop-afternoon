@@ -110,7 +110,7 @@ const currencyData = [
 
 <br />
 
-- Set some intial state for this component. We will need a `currencyChosen` which will default to `false`, `selected currency` which will default as 'Select Currency' (spelling and capitalization are important here) and finally an `amount` with the default of `0`.
+- Set some initial state for this component. We will need a `currencyChosen` which will default to `false`, `selected currency` which will default as 'Select Currency' (spelling and capitalization are important here) and finally an `amount` with the default of `0`.
 
 ```js
 const currencyData = [
@@ -122,10 +122,10 @@ const currencyData = [
 ]
 ```
 
-- Copy the above `currencyData` array inside of thhe `render()` method but outside of the `return` inside of the `Currency` component.
+- Copy the above `currencyData` array inside of the `render()` method but outside of the `return` inside of the `Currency` component.
 - Using `.map()`, create an `<option>` element for each item of the `currencyData` array. Each `<option>` element should have a `key`, and `id` and have the individual currency name as text. call the new array `currencyOptions`.
 - Create a container div `<div>`. Inside of the `div` create a `<select>` element.
-- Inside of the `select` create a single `<option>` element with a attribute of `value='Select Currency'` and 'Select Curreny' as the inner text. Below that, inside of `{}` display the `currencyOptions`.
+- Inside of the `select` create a single `<option>` element with a attribute of `value='Select Currency'` and 'Select Currency' as the inner text. Below that, inside of `{}` display the `currencyOptions`.
 - Create a new `<div>` to hold buttons that will increment and decrement the currency amount.
 - Inside of the newly created `div`, create two `<button>` elements, one should have `+` as it's inner text and the other should be `-`. The button with the `+` should have a className of `add` and the button with the `-` should have a className of `minus`
 - Below the `button`'s, render `this.props.render()` in curly braces. This is the function we will use to display our soon to be created component. The `this.props.render()` will have two arguments; one which will use `selectedCurrency` from state as the index to select an option from the `currencyData` array and the other argument will be called `amount` which will be the value of amount on state.
@@ -225,7 +225,7 @@ handleAmountDecrease = () => {
 }
 ```
 
-- Finally we will create a method that will handle the user selection from the dropdown. We will be using the public class field syntax and using `setState` with a callback for this as well. The callback will take one parameter, `prevState`. This parameter gives us access to state without modifying it directly. This method will need an event passed into it. We will assign the value from `evt.target.value` to a variable we will call `userValue`. This `setState` won't need access to the `prevState` parameter but we will still use the callback syntax. Return a new object from `setState` that updates `selectedCurrency` and `curencyChosen` on state. The new value of `selectedCurrency` will be the `userValue` variable. The new value of `currencyChosen` will be a boolean. Using a ternary, determine if `userValue` is equal to 'Selected Currency' (punctuation matters here). If it does, set the value to `false`, otherwise set to `true`.
+- Finally we will create a method that will handle the user selection from the dropdown. We will be using the public class field syntax and using `setState` with a callback for this as well. The callback will take one parameter, `prevState`. This parameter gives us access to state without modifying it directly. This method will need an event passed into it. We will assign the value from `evt.target.value` to a variable we will call `userValue`. This `setState` won't need access to the `prevState` parameter but we will still use the callback syntax. Return a new object from `setState` that updates `selectedCurrency` and `currencyChosen` on state. The new value of `selectedCurrency` will be the `userValue` variable. The new value of `currencyChosen` will be a boolean. Using a ternary, determine if `userValue` is equal to 'Selected Currency' (punctuation matters here). If it does, set the value to `false`, otherwise set to `true`.
 
 ```jsx
 handleOptionSelect = (evt) => {
@@ -427,7 +427,7 @@ export default App
 
 ### Instructions
 
-If you want to creae a separate component to render the exchanged currency rather than JSX, take a look at the component below that we would then import into `App.js`
+If you want to create a separate component to render the exchanged currency rather than JSX, take a look at the component below that we would then import into `App.js`
 
 <details>
 
@@ -467,7 +467,7 @@ This is happening because we are trying to display our data before we have anyth
 
 <br />
 
-Head down to the return of the `Currency` component inside of `withCurrency`. Here we will use a ternary to determine if our user has selected something from the dropdownn. Luckily on state we have a key of `currencyChose` which is a boolean. Use this to determine of we should display the result of invoking `this.props.render` or if we should display the text `Please Select Currency`.
+Head down to the return of the `Currency` component inside of `withCurrency`. Here we will use a ternary to determine if our user has selected something from the dropdown. Luckily on state we have a key of `currencyChose` which is a boolean. Use this to determine of we should display the result of invoking `this.props.render` or if we should display the text `Please Select Currency`.
 
 </details>
 
